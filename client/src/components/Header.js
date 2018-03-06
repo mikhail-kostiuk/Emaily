@@ -39,7 +39,7 @@ function mapStateToProps({ auth }) {
 }
 
 Header.propTypes = {
-  auth: PropTypes.oneOfType([React.PropTypes.oneOf([null]), PropTypes.any]).isRequired,
+  auth: PropTypes.oneOfType([PropTypes.oneOf([null]), PropTypes.any]).isRequired,
 };
 
 export default connect(mapStateToProps)(Header);
