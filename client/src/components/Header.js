@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Payments from './Payments';
 
 class Header extends Component {
   renderContent() {
@@ -15,11 +16,14 @@ class Header extends Component {
           </li>
         );
       default:
-        return (
-          <li>
+        return [
+          <li key="1">
+            <Payments />
+          </li>,
+          <li key="2">
             <a href="/api/logout">Logout</a>
-          </li>
-        );
+          </li>,
+        ];
     }
   }
 
@@ -42,7 +46,11 @@ function mapStateToProps({ auth }) {
 }
 
 Header.propTypes = {
-  auth: PropTypes.oneOfType([PropTypes.oneOf([null]), PropTypes.any]).isRequired,
+  auth: PropTypes.oneOfType([PropTypes.oneOf([null]), PropTypes.any]),
+};
+
+Header.defaultProps = {
+  auth: null,
 };
 
 export default connect(mapStateToProps)(Header);
