@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const SurveyField = ({ input, label, meta: { error, touched } }) => (
   <div>
-    {console.log(this)}
     <label>{label}</label>
     <input {...input} style={{ marginBottom: '5px' }} />
     <div className="red-text" style={{ marginBottom: '20px' }}>
