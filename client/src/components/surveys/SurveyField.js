@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SurveyField = ({ input, label, meta: { error, touched } }) => (
+const SurveyField = ({ input, label, meta: { touched, error } }) => (
   <div>
     <label>{label}</label>
     <input {...input} style={{ marginBottom: '5px' }} />
@@ -23,8 +23,8 @@ SurveyField.propTypes = {
   }).isRequired,
   label: PropTypes.string.isRequired,
   meta: PropTypes.shape({
-    error: PropTypes.string.isRequired,
     touched: PropTypes.bool.isRequired,
+    error: PropTypes.string,
   }).isRequired,
 };
 
