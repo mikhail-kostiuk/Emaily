@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { fetchSurveys } from '../../actions';
 
 class SurveyList extends Component {
@@ -8,7 +9,7 @@ class SurveyList extends Component {
   }
 
   renderSurveys() {
-    return this.props.surveys.map(survey => (
+    return this.props.surveys.reverse().map(survey => (
       <div className="card darken-1" key={survey._id}>
         <div className="card-content">
           <span className="card-title">{survey.title}</span>
@@ -31,5 +32,10 @@ class SurveyList extends Component {
 function mapStateToProps({ surveys }) {
   return { surveys };
 }
+
+SurveyList.propTypes = {
+  fetchSurveys: PropTypes.func.isRequired,
+  surveys: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default connect(mapStateToProps, { fetchSurveys })(SurveyList);
